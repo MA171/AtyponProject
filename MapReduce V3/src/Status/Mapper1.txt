@@ -1,0 +1,6 @@
+Start Mapping 1
+Done Reading 1
+Waiting for shuffle command 1
+Mapper 1 will close now , Bye 
+Time Taken is : 3.0s
+Memory Taken is : 18.0MB

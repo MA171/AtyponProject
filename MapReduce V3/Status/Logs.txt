@@ -1,0 +1,6 @@
+Start Time : 00:48:05
+Number of Mappers : 2
+Number of Reducers : 2
+Finish Time : 00:48:13
+Taken time is : 7.162s
+Taken Memory is : 4.759696960449219MB

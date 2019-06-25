@@ -1,0 +1,10 @@
+Start Reducing Process
+Start Reducing 1
+Start reading from Mappers 1
+Done Reading 1
+Reducer 1 Done Working
+Waiting for Writing command 1
+Writing command Received1
+Reducer 1 will close now
+Time Taken is : 1.561499195627E9s
+Memory Taken is : 20.215316772460938MB
