@@ -1,5 +1,6 @@
 package System.Sockets;
 
+import System.General.ClassBuilder;
 import System.General.ProtocolMsg;
 
 import java.io.BufferedReader;
@@ -42,18 +43,13 @@ public class SocketServerReduce implements SocketServer {
     public void createNewConnections(int numOfConnections){
         try{
             ProcessBuilder p;
-            String createConnectionCommand = "cd src && java Reducer ";
             for(int i=0;i<numOfConnections;i++){
                 System.out.println("Creating reducer number " + (i+1));
-                p = new ProcessBuilder("cmd.exe","/c",createConnectionCommand + (i+1));
-                watch(p.start());
+                Process process = ClassBuilder.runClass("Reducer " + (i+1));
+                watch(process);
                 Thread.sleep(250);
             }
-            p = new ProcessBuilder("cmd.exe","/c","cd src && del Reducer.class");
-            p.start();
-        }
-        catch (IOException ex){
-            System.out.println("Error in Creating the Reducer process : " + ex);
+            //ClassBuilder.removeClass("Reducer");
         }
         catch (InterruptedException ex){
             System.out.println("Error in sleeping");
