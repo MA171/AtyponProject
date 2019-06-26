@@ -1,6 +1,7 @@
 package System.Sockets;
 
 import System.Components.DataMsg;
+import System.General.ClassBuilder;
 import System.General.ProtocolMsg;
 
 import java.io.BufferedReader;
@@ -44,18 +45,13 @@ public class SocketServerMap implements SocketServer {
     public void createNewConnections(int numOfConnections){
         try{
             ProcessBuilder p;
-            String createConnectionCommand = "cd src && java Mapper ";
             for(int i=0;i<numOfConnections;i++){
                 System.out.println("Creating mapper number " + (i+1));
-                p = new ProcessBuilder("cmd.exe","/c",createConnectionCommand + (i+1));
-                watch(p.start());
+                Process process = ClassBuilder.runClass("Mapper " + (i+1));
+                watch(process);
                 Thread.sleep(250);
             }
-            p = new ProcessBuilder("cmd.exe","/c","cd src && del Mapper.class");
-            p.start();
-        }
-        catch (IOException ex){
-            System.out.println("Error in Creating the Mapper process : " + ex);
+            //ClassBuilder.removeClass("Mapper");
         }
         catch (InterruptedException ex){
             System.out.println("Error in sleeping");
