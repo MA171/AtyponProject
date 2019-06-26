@@ -30,7 +30,7 @@ public class ClassBuilder {
 
     public static Process runClass(String name){
         try{
-            p = new ProcessBuilder("cmd.exe","/c","cd src && " + name);
+            p = new ProcessBuilder("cmd.exe","/c","cd src && java " + name);
             return p.start();
         }
         catch (IOException ex){
@@ -39,5 +39,18 @@ public class ClassBuilder {
         }
         return null;
     }
+
+    public static void removeClass(String name){
+        try{
+            p = new ProcessBuilder("cmd.exe","/c","cd src && del " + name + ".class");
+            p.start();
+        }
+        catch (IOException ex){
+            System.out.println("Exception in removeClass : ");
+            ex.printStackTrace();
+        }
+
+    }
+
 
 }
